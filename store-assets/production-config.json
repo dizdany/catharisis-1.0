@@ -1,0 +1,112 @@
+{
+  "expo": {
+    "name": "Catharsis - Bible & Mood",
+    "slug": "catharsis-bible-mood",
+    "version": "1.0.0",
+    "description": "A spiritual companion app that helps you find Bible verses based on your mood and track your spiritual journey with personalized insights and achievements.",
+    "keywords": ["bible", "spiritual", "mood", "verses", "christian", "faith", "devotional", "scripture"],
+    "privacy": "public",
+    "primaryColor": "#6366f1",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "catharsis",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.catharsis.bible.mood",
+      "buildNumber": "1",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "associatedDomains": ["applinks:catharsis-app.com"],
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to save and share Bible verses as beautiful images.",
+        "NSPhotoLibraryAddUsageDescription": "This app needs permission to save Bible verse images to your photo library for sharing and keeping.",
+        "NSCameraUsageDescription": "This app needs camera access to take photos for sharing Bible verses.",
+        "NSLocationWhenInUseUsageDescription": "Location is used to provide location-based spiritual content and community features.",
+        "CFBundleDisplayName": "Catharsis",
+        "CFBundleShortVersionString": "1.0.0",
+        "CFBundleVersion": "1",
+        "LSRequiresIPhoneOS": true,
+        "UIRequiredDeviceCapabilities": ["armv7"],
+        "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
+        "UISupportedInterfaceOrientations~ipad": [
+          "UIInterfaceOrientationPortrait",
+          "UIInterfaceOrientationPortraitUpsideDown",
+          "UIInterfaceOrientationLandscapeLeft",
+          "UIInterfaceOrientationLandscapeRight"
+        ]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.catharsis.bible.mood",
+      "versionCode": 1,
+      "compileSdkVersion": 34,
+      "targetSdkVersion": 34,
+      "minSdkVersion": 23,
+      "allowBackup": false,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": {
+            "scheme": "https",
+            "host": "catharsis-app.com"
+          },
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ],
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_VIDEO",
+        "READ_MEDIA_AUDIO",
+        "READ_MEDIA_VISUAL_USER_SELECTED",
+        "ACCESS_MEDIA_LOCATION",
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "VIBRATE",
+        "WAKE_LOCK"
+      ],
+      "blockedPermissions": [
+        "SYSTEM_ALERT_WINDOW",
+        "MODIFY_AUDIO_SETTINGS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://catharsis-app.com/"
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "This app needs access to your photo library to save and share Bible verses as beautiful images.",
+          "savePhotosPermission": "This app needs permission to save Bible verse images to your photo library for sharing and keeping.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
