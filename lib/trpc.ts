@@ -6,13 +6,33 @@ import superjson from "superjson";
 export const trpc = createTRPCReact<AppRouter>();
 
 const getBaseUrl = () => {
+  // Check for explicit environment variable first
   if (process.env.EXPO_PUBLIC_RORK_API_BASE_URL) {
     console.log('Using EXPO_PUBLIC_RORK_API_BASE_URL:', process.env.EXPO_PUBLIC_RORK_API_BASE_URL);
     return process.env.EXPO_PUBLIC_RORK_API_BASE_URL;
   }
 
-  // Fallback to the origin from app.json
-  console.log('Using fallback base URL: https://rork.com');
+  // For local development, detect if we're running locally
+  if (__DEV__) {
+    // Try to detect local development environment
+    const hostname = typeof window !== 'undefined' ? window.location?.hostname : undefined;
+    
+    if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname?.includes('192.168.')) {
+      const localUrl = `http://${hostname}:8081`;
+      console.log('Detected local development, using:', localUrl);
+      return localUrl;
+    }
+    
+    // For Expo development server
+    if (hostname?.includes('expo.dev') || hostname?.includes('ngrok')) {
+      const devUrl = `https://${hostname}`;
+      console.log('Detected Expo dev server, using:', devUrl);
+      return devUrl;
+    }
+  }
+
+  // Fallback to production URL
+  console.log('Using production base URL: https://rork.com');
   return "https://rork.com";
 };
 
